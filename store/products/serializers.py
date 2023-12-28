@@ -9,7 +9,7 @@ class CategoryListSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField()
     class Meta:
         model = Category
-        fields = ["name", 'id', 'url', 'item']
+        fields = ["name", 'id', 'url']
 
     def get_url(self, obj):
         request = self.context['request']
@@ -19,17 +19,31 @@ class CategoryListSerializer(serializers.ModelSerializer):
                            request=request)
         }
 
+
+class CategoryProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = [
+            'id',
+            'user',
+            'name',
+            'price',
+            'image',
+            'category',
+            'category_id'
+        ]
 class CategoryDetaiSerializer(serializers.ModelSerializer):
+    item = CategoryProductSerializer(many=True)
     class Meta:
         model = Category
         fields = [
             'name',
             'id',
-            'product'
+            'item'
         ]
 
 
-class ProductListSerializer(serializers.ModelSerializer):
+class ProductListSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.CharField(read_only=True)
     category = CategoryListSerializer(read_only=True)
     category_id = serializers.UUIDField(
@@ -48,7 +62,8 @@ class ProductListSerializer(serializers.ModelSerializer):
                   'created_at',
                   'updated_at',
                   'category',
-                  'category_id'             
+                  'category_id',
+                  'url'          
                   ]
 
 
