@@ -4,7 +4,8 @@ from .models import (
 )
 from .serializers import (
     ProductListSerializer,
-    CategoryListSerializer
+    CategoryListSerializer,
+    CategoryDetaiSerializer
 )
 
 class ProductViewList(ModelViewSet):
@@ -20,6 +21,11 @@ class ProductViewList(ModelViewSet):
 class CategoryViewList(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategoryListSerializer
-    
+
+
+    def get_serializer_class(self):
+        if (self.action == 'retrieve'):
+            return CategoryDetaiSerializer
+        return super().get_serializer_class()
 
         
