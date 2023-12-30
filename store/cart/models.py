@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 from django.contrib.auth import get_user_model
 from products.models import Product
 from uuid import uuid4
@@ -11,7 +12,7 @@ class Cart(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid4,
-        editable=False
+        # editable=False
     )
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
@@ -30,13 +31,15 @@ class Cart(models.Model):
                                       default=0.00
                                       )
     
-    def save(self, *args, **kwargs):
-        self.update_total_price()
-    
 
     def update_total_price(self):
-        self.total_price = sum(item.total_price for item in self.cart_item.all())
-
+        print('got called')
+        total_price = self.cartitems.aggregate(Sum(
+            'total_price'
+            ))['total_price__sum'] or 0
+        self.total_price = total_price
+        self.save()
+            
 
 # creating the cart item
 class CartItem(models.Model):
@@ -47,11 +50,11 @@ class CartItem(models.Model):
     )
     cart = models.ForeignKey(
         Cart,on_delete=models.CASCADE,
-        related_name='cart_item'
+        related_name='cartitems'
     )
     product = models.ForeignKey(Product,
                                 on_delete=models.CASCADE,
-                                related_name='cart_item'
+                                # related_name='item'
                                 )
     quantity = models.PositiveIntegerField()
     total_price = models.DecimalField(max_digits=10, 
@@ -60,12 +63,11 @@ class CartItem(models.Model):
     
     def save(self, *args, **kwargs):
         self.update_total_price()
-        super().save(self, *args, **kwargs)
+        return super().save(*args, **kwargs)
 
     def update_total_price(self):
         self.total_price = self.quantity * self.product.price
-
-    
+        
 
     
 

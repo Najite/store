@@ -55,16 +55,15 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, 
                                 on_delete=models.CASCADE,
                                 related_name='product')
-    quantity = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField(null=True)
     total_price = models.DecimalField(max_digits=10,
                                       decimal_places=2,
                                       default=0.00
                                       )
     
-    def save(self, *args, **kwargs):
-        self.update_total_price()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.update_total_price()
+    #     super().save(*args, **kwargs)
     
-    def update_toal_price(self):
-        self.total_price = self.quantity * self.product.price
-    
+    # def update_total_price(self):
+    #     self.total_price = sum(item.total_price for item in self.orderitem_set.all())
