@@ -46,8 +46,9 @@ class CartAdmin(admin.ModelAdmin):
             order = open_orders.first()
         else:
             order = Order.objects.create(user=obj.user)
-
-        for cart_item in obj.cartitem_set.all():
+            
+ 
+        for cart_item in obj.cartitems.all():
             order_item, created = OrderItem.objects.get_or_create(
                 order=order,
                 product=cart_item.product
@@ -55,7 +56,6 @@ class CartAdmin(admin.ModelAdmin):
             order_item.quantity = cart_item.quantity
             order_item.total_price = cart_item.total_price
             order_item.save()
-        
         order.save()
 
     def save_formset(self, request, form, formset, change):
