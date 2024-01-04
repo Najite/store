@@ -40,5 +40,6 @@ class OrderSerializer(serializers.ModelSerializer):
             "total_price",
             "order_item"
         ]
+        
 
 
