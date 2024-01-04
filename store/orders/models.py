@@ -39,6 +39,10 @@ class Order(models.Model):
     
     def update_total_price(self):
         self.total_price = sum(item.total_price for item in self.order_item.all())
+    
+    def get_order_with_items(self, order_id):
+        return Order.objects.prefetch_related('orderitems__product').get(id=order_id)
+    
 
 
 # creating the order item
@@ -50,12 +54,15 @@ class OrderItem(models.Model):
     )
     order = models.ForeignKey(
         Order, on_delete=models.CASCADE,
-        related_name='order_item'
+        related_name='order_item',
+        db_index=True
     )
     product = models.ForeignKey(Product, 
                                 on_delete=models.CASCADE,
-                                related_name='product')
-    quantity = models.PositiveIntegerField(null=True)
+                                related_name='order_items',
+                                db_index=True
+                                )
+    quantity = models.PositiveIntegerField()
     total_price = models.DecimalField(max_digits=10,
                                       decimal_places=2,
                                       default=0.00

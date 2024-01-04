@@ -74,6 +74,11 @@ class ProductListSerializer(serializers.HyperlinkedModelSerializer):
             validated_data['category'] = category
         
         return super().create(validated_data)
+    
+    def validate_category_id(self, value):
+        if not Category.objects.filter(pk=value).exists():
+            raise serializers.ValidationError("There is no category associated with that id")
+        return value
 
 
 

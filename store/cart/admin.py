@@ -47,7 +47,7 @@ class CartAdmin(admin.ModelAdmin):
         else:
             order = Order.objects.create(user=obj.user)
             
- 
+
         for cart_item in obj.cartitems.all():
             order_item, created = OrderItem.objects.get_or_create(
                 order=order,
