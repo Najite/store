@@ -15,7 +15,7 @@ class Order(models.Model):
         default=uuid4
     )
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE,
+        User, on_delete=models.PROTECT,
         related_name='order'
     )
     order_status_choice = [
@@ -28,20 +28,14 @@ class Order(models.Model):
                                     choices=order_status_choice,
                                     default="Pending")
     order_date = models.DateTimeField(auto_now_add=True)
-    total_price = models.DecimalField(
-        max_digits=10, decimal_places=2,
-        default=0.00
-    )
 
-    def save(self, *args, **kwargs):
-        self.update_total_price()
-        super().save(*args, **kwargs)
-    
-    def update_total_price(self):
-        self.total_price = sum(item.total_price for item in self.order_item.all())
-    
-    def get_order_with_items(self, order_id):
-        return Order.objects.prefetch_related('orderitems__product').get(id=order_id)
+    @property
+    def total_price(self):
+        items = self.order_item.all()
+        total = sum(
+            [item.quantity * item.product.price for item in items]
+            )
+        return total
     
 
 
@@ -68,9 +62,4 @@ class OrderItem(models.Model):
                                       default=0.00
                                       )
     
-    # def save(self, *args, **kwargs):
-    #     self.update_total_price()
-    #     super().save(*args, **kwargs)
     
-    # def update_total_price(self):
-    #     self.total_price = sum(item.total_price for item in self.orderitem_set.all())

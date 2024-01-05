@@ -134,7 +134,7 @@ class CartItemView(ModelViewSet):
             )
             
             order_item.quantity = cart_item.quantity
-            order_item.total_price = cart_item.total_price
+            # order_item.total_price = cart_item.total_price
             order_item.save()
         order.save() 
         serializer.save(order=order)
