@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'orders.apps.OrdersConfig',
     'cart.apps.CartConfig',
+    'payments.apps.PaymentsConfig',
 
     # third party packages
     'rest_framework',
