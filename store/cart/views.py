@@ -83,7 +83,7 @@ class CartItemView(ModelViewSet):
         serializer.is_valid(raise_exception=True)
 
         if isinstance(serializer, AddToCartSerializer):
-            create_order = self.perform_create_order(serializer)
+            self.perform_create_order(serializer)
             success_message = "success"
         else:
             success_message = 'failed'
@@ -124,7 +124,7 @@ class CartItemView(ModelViewSet):
             order = open_order.first()
         else:
             order = Order.objects.create(user=self.request.user)
-            
+             
         
         for cart_item in CartItem.objects.all():
             product = cart_item.product
