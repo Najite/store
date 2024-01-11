@@ -29,8 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '*']
 
 
-# Application definition
-
+# Application definition 
+ 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -88,14 +88,14 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'store',
-        'USER': 'root',
-        'PASSWORD': 'leonard',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '1c3G13Gb*E6afcb2eGbFcGc432AbC3gD',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '55725',
+    } 
+}  
 
 
 # Password validation
