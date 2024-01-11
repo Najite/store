@@ -8,6 +8,11 @@ django = "*"
 djangorestframework = "*"
 mysqlclient = "*"
 pillow = "*"
+drf-nested-routers = "*"
+requests = "*"
+channels = "*"
+psycopg = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
