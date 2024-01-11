@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
-
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -81,7 +84,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'store.wsgi.application'
-
+ 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -89,12 +92,13 @@ WSGI_APPLICATION = 'store.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '1c3G13Gb*E6afcb2eGbFcGc432AbC3gD',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '55725',
-    } 
+        'URL': os.environ.get('DATABASE_URL'),
+        'NAME': os.environ.get('PGNAME'),
+        'USER': os.environ.get('PGUSER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('PGHOST'), # 'roundhouse.proxy.rlwy.net',
+        'PORT': os.environ.get('PGPORT'),  
+    }  
 }  
 
 

@@ -13,6 +13,7 @@ requests = "*"
 channels = "*"
 psycopg = "*"
 psycopg2-binary = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
