@@ -85,21 +85,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'store.wsgi.app'
 
-
+ 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { 
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'URL': os.environ.get('DATABASE_URL'),
-        'NAME': os.environ.get('PGNAME'),
+        'NAME': os.environ.get('PGDATABASE'),
         'USER': os.environ.get('PGUSER'),
-        'PASSWORD': os.environ.get('PASSWORD'),
-        'HOST': os.environ.get('PGHOST'), # 'roundhouse.proxy.rlwy.net',
-        'PORT': os.environ.get('PGPORT'),  
-    }  
-}  
+        'PASSWORD': os.environ.get('PGPASSWORD'),
+        'HOST': os.environ.get('PGHOST'), # 'roundhouse.proxy.rlwy.net', 
+        'PORT': os.environ.get('PGPORT'),   
+    }   
+}   
 
 
 # Password validation
