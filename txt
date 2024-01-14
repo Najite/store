@@ -12,6 +12,7 @@ drf-nested-routers = "*"
 requests = "*"
 channels = "*"
 psycopg = "*"
+psycopg2-binary = "*"
 python-dotenv = "*"
 gunicorn = "*"
 
