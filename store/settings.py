@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
-load_dotenv('.env')
+# load_dotenv('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -90,15 +90,15 @@ WSGI_APPLICATION = 'store.wsgi.app'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = { 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'URL': os.getenv('DATABASE_URL'),
-        'NAME': os.getenv('PGDATABASE'),
-        'USER': os.getenv('PGUSER'),
-        'PASSWORD': os.getenv('PGPASSWORD'),
-        'HOST': os.getenv('PGHOST'), # 'roundhouse.proxy.rlwy.net', 
-        'PORT': os.getenv('PGPORT'),   
-    }   
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'URL': os.getenv('DATABASE_URL'),
+    #     'NAME': os.getenv('PGDATABASE'),
+    #     'USER': os.getenv('PGUSER'),
+    #     'PASSWORD': os.getenv('PGPASSWORD'),
+    #     'HOST': os.getenv('PGHOST'), # 'roundhouse.proxy.rlwy.net', 
+    #     'PORT': os.getenv('PGPORT'),   
+    # }   
 }   
 
 
