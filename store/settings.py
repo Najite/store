@@ -89,18 +89,17 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = { 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+DATABASES = {  
+    'default': { 
+        'ENGINE': 'django.db.backends.mysql', 
         'URL': os.getenv('DATABASE_URL'),
-        'NAME': os.getenv('PGDATABASE'),
-        'USER': os.getenv('PGUSER'),
-        'PASSWORD': os.getenv('PGPASSWORD'),
-        'HOST': os.getenv('PGHOST'), # 'roundhouse.proxy.rlwy.net', 
-        'PORT': os.getenv('PGPORT'),   
-    }   
-}   
-
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('DBUSER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'), 
+    } 
+} 
+ 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
