@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('DBUSER'),
         'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': os.getenv('HOST'), 
+        'HOST': 'bechi8scvumwlrlqifal-mysql.services.clever-cloud.com', 
     } 
 }  
     
