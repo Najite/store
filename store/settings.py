@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'payments.apps.PaymentsConfig',
 
     # third party packages
-    'corsheaders',
+    # 'corsheaders',
     'rest_framework',
 
 ]
@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # corsheader middleware
+    # 'corsheaders.middleware.CorsMiddleware', # corsheader middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -152,16 +152,16 @@ MEDIA_URL = '/media/'
 
 FLW_SEC_KEY = "FLWSECK_TEST-8631e24e08584b518d6e850dda0f556e-X"
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://nahjyte.pythonanywhere.com",
-    ]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+#     "https://nahjyte.pythonanywhere.com",
+#     ]
 
-CORS_ALLOW_HEADERS = (
-    "accept",
-    "authorization",
-    "content-type",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-)
+# CORS_ALLOW_HEADERS = (
+#     "accept",
+#     "authorization",
+#     "content-type",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+# )
