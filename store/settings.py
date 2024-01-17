@@ -95,7 +95,7 @@ DATABASES = {
         # 'URL': os.getenv('DATABASE_URL'),
         'NAME': 'nahjyte$store',
         'USER': 'nahjyte',
-        'PASSWORD': 'leonard112',
+        'PASSWORD': 'leonard12',
         'HOST': 'nahjyte.mysql.pythonanywhere-services.com', 
     } 
 }  
