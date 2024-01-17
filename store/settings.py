@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'payments.apps.PaymentsConfig',
 
     # third party packages
-    # 'corsheaders',
+    'corsheaders',
     'rest_framework',
 
 ]
@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware', # corsheader middleware
+    'corsheaders.middleware.CorsMiddleware', # corsheader middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
