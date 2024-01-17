@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         # 'URL': os.getenv('DATABASE_URL'),
         'NAME': 'nahjyte$store',
-        'USER': os.getenv('DBUSER'),
+        'USER': 'nahjyte',
         'PASSWORD': os.getenv('PASSWORD'),
         'HOST': 'nahjyte.mysql.pythonanywhere-services.com', 
     } 
