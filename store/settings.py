@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # third party packages
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
 
 ]
 
@@ -177,3 +178,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 #     "x-csrftoken",
 #     "x-requested-with",
 # )
+
+REST_FRAMEWORK = {
+    'DFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication'
+    ]
+}
