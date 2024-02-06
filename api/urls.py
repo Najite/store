@@ -1,12 +1,15 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_nested import routers
+from rest_framework_simplejwt import views as jwt_views
+
 from products.views import (
     ProductViewList, CategoryViewList
 )
 from orders.views import OrderViewset
 from payments.views import PaymentViewSet
 from cart.views import CartView, CartItemView
+
 
 router = DefaultRouter()
 
@@ -26,5 +29,7 @@ cart_router.register('items', CartItemView, basename='cart-items')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('', include(cart_router.urls))
+    path('', include(cart_router.urls)),
+    path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),   
 ]
