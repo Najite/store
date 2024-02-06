@@ -18,8 +18,6 @@ load_dotenv('.env')
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -53,6 +51,7 @@ INSTALLED_APPS = [
     # third party packages
     'corsheaders',
     'rest_framework',
+    # 'rest_framework_simplejwt',
     'rest_framework.authtoken',
 
 ]
@@ -99,12 +98,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         # 'URL': os.getenv('DATABASE_URL'),
         'NAME': 'nahjyte$store',
+        # 'NAME': 'store',
         'USER': 'nahjyte',
+        # 'USER': 'root',
         'PASSWORD': 'leonard12',
+        # 'PASSWORD': 'leonard',
         'HOST': 'nahjyte.mysql.pythonanywhere-services.com', 
+        # 'HOST': '127.0.0.1'
     } 
 }  
-    
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -122,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]
+] 
 
 
 # Internationalization
@@ -158,7 +161,6 @@ AUTH_USER_MODEL = 'accounts.User'
 
 
 
-
 # flutterwave secret key
 FLW_SEC_KEY = "FLWSECK_TEST-8631e24e08584b518d6e850dda0f556e-X"
 
@@ -181,6 +183,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     'DFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.TokenAuthentication'
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication'
