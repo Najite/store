@@ -165,12 +165,11 @@ AUTH_USER_MODEL = 'accounts.User'
 FLW_SEC_KEY = "FLWSECK_TEST-8631e24e08584b518d6e850dda0f556e-X"
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",
-#     # "https://nahjyte.pythonanywhere.com",
-#     ]
+CORS_ALLOWED_ORIGINS = [
+     "http://localhost:5173",
+     ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
 # CORS_ALLOW_HEADERS = (
 #     "accept",
